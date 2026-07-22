@@ -1,8 +1,8 @@
 # Manual asset packages
 
-rgnMultitool does not automatically download, extract or install game assets. The Lua only reads compatible files that the user has deliberately placed inside the CS2 `game/csgo` directory.
+MAHANMOI does not automatically download, extract or install game assets. The Lua only reads compatible files that the user has deliberately placed inside the CS2 `game/csgo` directory.
 
-The optional packages are published in the [Manual Asset Packs v1.0 release](https://github.com/ragnarokcs/rgnMultitool/releases/tag/assets-v1.0). They contain static, compiled CS2 resources only—no executables, PowerShell scripts, installers or background services.
+The optional packages are published in the [Manual Asset Packs v1.0 release](https://github.com/ragnarokcs/MAHANMOI/releases/tag/assets-v1.0). They contain static, compiled CS2 resources only—no executables, PowerShell scripts, installers or background services.
 
 ## Requirements
 
@@ -23,7 +23,7 @@ If Steam is installed elsewhere, open Steam, right-click Counter-Strike 2, selec
 
 ## Sound pack
 
-1. Download `rgnMultitool-Sounds-v1.0.zip` from the asset release.
+1. Download `MAHANMOI-Sounds-v1.0.zip` from the asset release.
 2. Open the archive and extract its contents into CS2's `game\csgo` directory.
 3. Confirm that the final files are inside `game\csgo\sounds`. Subfolders are supported:
 
@@ -34,7 +34,7 @@ If Steam is installed elsewhere, open Steam, right-click Counter-Strike 2, selec
    game\csgo\sounds\my_pack\custom_hit.vsnd_c
    ```
 
-4. Run rgnMultitool, open **CUSTOM SOUNDS**, and press **Refresh csgo/sounds**.
+4. Run MAHANMOI, open **CUSTOM SOUNDS**, and press **Refresh csgo/sounds**.
 5. Use the preview buttons before enabling the independent hit and kill effects.
 
 Do not create an accidental extra `sounds\sounds` folder. The `.vsnd_c` files must remain somewhere below `game\csgo\sounds`.
@@ -44,14 +44,14 @@ Do not create an accidental extra `sounds\sounds` folder. The `.vsnd_c` files mu
 The curated package is split into three RAR volumes because GitHub limits the size of each Release asset:
 
 ```text
-rgnMultitool-Custom-Characters-v1.part1.rar
-rgnMultitool-Custom-Characters-v1.part2.rar
-rgnMultitool-Custom-Characters-v1.part3.rar
+MAHANMOI-Custom-Characters-v1.part1.rar
+MAHANMOI-Custom-Characters-v1.part2.rar
+MAHANMOI-Custom-Characters-v1.part3.rar
 ```
 
-1. Download every file whose name begins with `rgnMultitool-Custom-Characters-v1.part`.
+1. Download every file whose name begins with `MAHANMOI-Custom-Characters-v1.part`.
 2. Keep all parts together in the same local folder.
-3. Open only `rgnMultitool-Custom-Characters-v1.part1.rar` with WinRAR or 7-Zip.
+3. Open only `MAHANMOI-Custom-Characters-v1.part1.rar` with WinRAR or 7-Zip.
 4. Extract the archive into CS2's `game\csgo` directory.
 5. Confirm the resulting structure begins with:
 
@@ -60,7 +60,7 @@ rgnMultitool-Custom-Characters-v1.part3.rar
    game\csgo\characters\materials\...
    ```
 
-6. Restart CS2 if it was running, then run rgnMultitool and open **SKINS CUSTOM**.
+6. Restart CS2 if it was running, then run MAHANMOI and open **SKINS CUSTOM**.
 
 Do not extract each part separately. Do not create an extra `characters\characters` folder.
 
@@ -73,8 +73,8 @@ The exact model and sound filenames are documented in [`CUSTOM_CHARACTER_CATALOG
 Download `SHA256SUMS.txt` from the same Release and compare each package hash before extracting. On PowerShell, run:
 
 ```powershell
-Get-FileHash -Algorithm SHA256 .\rgnMultitool-Sounds-v1.0.zip
-Get-FileHash -Algorithm SHA256 .\rgnMultitool-Custom-Characters-v1.part1.rar
+Get-FileHash -Algorithm SHA256 .\MAHANMOI-Sounds-v1.0.zip
+Get-FileHash -Algorithm SHA256 .\MAHANMOI-Custom-Characters-v1.part1.rar
 ```
 
 Repeat the second command for every numbered character part. A mismatched hash means the download is incomplete and must not be extracted.
@@ -110,4 +110,4 @@ Back up personal assets before deleting either folder.
 
 - Sound collection format and original pack: `cachorropacoca/aw_cs2v6_femboytap`.
 - Character source collection: LynX's Custom Models [AG2].
-- Packaging, filtering and rgnMultitool integration: Ragnarokcs.
+- Packaging, filtering and MAHANMOI integration: Ragnarokcs.
