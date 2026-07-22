@@ -1,7 +1,7 @@
--- rgnMultitool 1.4.0
-local RGN_MULTITOOL_VERSION = "1.4.0"
-local RGN_MULTITOOL_SIGNATURE = "RGN_MULTITOOL_SOURCE_V1"
-_G.RGN_MULTITOOL_VERSION = RGN_MULTITOOL_VERSION
+-- MAHANMOI 1.4.0
+local MOI_MULTSCRIPT_VERSION = "1.4.0"
+local MOI_MULTSCRIPT_SIGNATURE = "MOI_MULTSCRIPT_SOURCE_V1"
+_G.MOI_MULTSCRIPT_VERSION = MOI_MULTSCRIPT_VERSION
 
 local staleEvents = { "Draw", "CreateMove", "PreMove", "DrawESP", "FireGameEvent", "Unload" }
 local function clearCallbacks(ids)
@@ -13,10 +13,10 @@ local function clearCallbacks(ids)
 end
 
 clearCallbacks({
-    "rgnMultitool_Watermark", "rgnMultitool_MISCLogic",
-    "rgnMultitool_MISCLogicMove", "rgnMultitool_MISCEvents",
-    "rgnMultitool_WeaponsSessionEvents", "rgnMultitool_GameEvents",
-    "rgnMultitool_GameEventsUnload", "rgnMultitool_MISCUnload"
+    "MAHANMOI_Watermark", "MAHANMOI_MISCLogic",
+    "MAHANMOI_MISCLogicMove", "MAHANMOI_MISCEvents",
+    "MAHANMOI_WeaponsSessionEvents", "MAHANMOI_GameEvents",
+    "MAHANMOI_GameEventsUnload", "MAHANMOI_MISCUnload"
 })
 if type(M) == "table" and type(M.Watermark) == "function" then
     pcall(M.Watermark, M, false)
@@ -38,10 +38,10 @@ clearCallbacks({
     "rgnWEAPONS_UIDraw", "rgnWEAPONS_UIInput", "rgnWEAPONS_UIUnload",
     "rgnWEAPONS_Engine", "rgnWEAPONS_Unload", "rgnWEAPONS_Watermark",
     "rgnWEAPONS_LateMesh",
-    "rgnMultitool_ManualAADraw", "rgnMultitool_ManualAAMove",
-    "rgnMultitool_ManualAAUnload", "rgnMultitool_WhitelistRefresh",
-    "rgnMultitool_WhitelistESP", "rgnMultitool_WhitelistUnload",
-    "rgnMultitool_RegionDraw", "rgnMultitool_RegionUnload"
+    "MAHANMOI_ManualAADraw", "MAHANMOI_ManualAAMove",
+    "MAHANMOI_ManualAAUnload", "MAHANMOI_WhitelistRefresh",
+    "MAHANMOI_WhitelistESP", "MAHANMOI_WhitelistUnload",
+    "MAHANMOI_RegionDraw", "MAHANMOI_RegionUnload"
 })
 
 local __RGN_GUILIB = [===[
@@ -687,7 +687,7 @@ function Section:_widget(wd, x, y, w)
         local buttonText = fitText(wd.label, mmax(20, w - 18), FONT)
         text(x + w / 2, y + 6, lerpc(T.text, T.texthi, wd._h), buttonText, FONT, "center")
         if clicked(x, y + 1, w, bh) then
-            local ok, err = pcall(wd.cb); if not ok then print("[rgnMultitool] button error: " .. tostring(err)) end
+            local ok, err = pcall(wd.cb); if not ok then print("[MAHANMOI] button error: " .. tostring(err)) end
         end
 
     elseif wd.kind == "slider" then
@@ -885,7 +885,7 @@ function Section:_widget(wd, x, y, w)
         if wd.fn then
             UI._x, UI._cy, UI._w = x, y, w
             local ok, err = pcall(wd.fn, UI, x, y, w)
-            if not ok then print("[rgnMultitool] custom widget error: " .. tostring(err)) end
+            if not ok then print("[MAHANMOI] custom widget error: " .. tostring(err)) end
             local used = UI._cy - y
             wd._measured = used > 0 and used or wd.h
         end
@@ -944,7 +944,7 @@ local function renderSectionAt(s, x, y, w)
     if clipTop and (y + h) <= clipTop then return h end
     local rh = h
     local ok, err = pcall(function() rh = s:render(x, y, w) or h end)
-    if not ok then print("[rgnMultitool] section '" .. tostring(s.title) .. "' error: " .. tostring(err)); return h end
+    if not ok then print("[MAHANMOI] section '" .. tostring(s.title) .. "' error: " .. tostring(err)); return h end
     return rh
 end
 
@@ -1163,7 +1163,7 @@ M._watermark = {
     enabled    = false,
     parts      = { cheat = false, lua = true, user = false, nick = true, fps = true, ping = true },
     cheat_name = "AIMWARE.NET",
-    lua_name   = "rgnMultitool",
+    lua_name   = "MAHANMOI",
     user       = nil,
     nick       = nil,
     ping       = nil,
@@ -1642,7 +1642,7 @@ end
 
 function M:_drawTabBar(win)
     drawLogo(win.x + 15, win.y + 15, 40, 28)
-    text(win.x + 67, win.y + 11, T.texthi, "rgnMultitool", FONT_LOGO)
+    text(win.x + 67, win.y + 11, T.texthi, "MAHANMOI", FONT_LOGO)
     text(win.x + 67, win.y + 33, T.textdim, "Aimware Lua Suite", FONT_SMALL)
     local credit = fitText("Made by " .. aimwareHeaderUser(), 180, FONT_SMALL)
     text(win.x + win.w - 50, win.y + 22, T.textdim, credit, FONT_SMALL, "right")
@@ -1907,7 +1907,7 @@ function M:_frame()
         rbox(real.x, real.y, miniW, miniH, 9, T.bg, T.border)
         rfill(real.x, real.y, miniW, 2, 9, T.accent, true, true, false, false)
         drawLogo(real.x + 7, real.y + 8, 36, 26)
-        text(real.x + 53, real.y + 13, T.texthi, "rgnMultitool", FONT_LOGO)
+        text(real.x + 53, real.y + 13, T.texthi, "MAHANMOI", FONT_LOGO)
         rbox(expandX, real.y + 10, 22, 22, 5, T.widget, T.border)
         text(expandX + 11, real.y + 12, T.texthi, "+", FONT_B, "center")
         return
@@ -2001,7 +2001,7 @@ function M:_frame()
     clipTop, clipBottom = win.y + T.titlebar, win.y + win.h - 2
     if tab then
         local ok, err = pcall(function() tab:render(cx, cy, cw) end)
-        if not ok then print("[rgnMultitool] tab '" .. tostring(tab.name) .. "' error: " .. tostring(err)) end
+        if not ok then print("[MAHANMOI] tab '" .. tostring(tab.name) .. "' error: " .. tostring(err)) end
     end
     clipTop, clipBottom = nil, nil
 
@@ -2082,7 +2082,7 @@ function M:Build(opts)
     _getWheel = resolveWheel()
     _clock    = resolveClock()
     initFonts()
-    if not _getMouse then print("[rgnMultitool] WARNING: mouse position API not found -- cursor won't track") end
+    if not _getMouse then print("[MAHANMOI] WARNING: mouse position API not found -- cursor won't track") end
 
     local menuRef
     pcall(function() menuRef = gui.Reference("MENU") end)
@@ -2167,7 +2167,7 @@ function M:Build(opts)
         end
     end
 
-    callbacks.Register("Draw", "rgnMultitool_UIDraw", function()
+    callbacks.Register("Draw", "MAHANMOI_UIDraw", function()
         local open = true
         if menuRef then pcall(function() open = menuRef:IsActive() end) end
         self._open = open
@@ -2210,12 +2210,12 @@ function M:Build(opts)
         end
 
         local ok, err = pcall(function() self:_frame() end)
-        if not ok then print("[rgnMultitool] frame error: " .. tostring(err)) end
+        if not ok then print("[MAHANMOI] frame error: " .. tostring(err)) end
         drawRuntimeOverlays(t)
     end)
 
     pcall(function()
-        callbacks.Register("CreateMove", "rgnMultitool_UIInput", function(cmd)
+        callbacks.Register("CreateMove", "MAHANMOI_UIInput", function(cmd)
         local viewmodelCommandActive = M._viewmodelCommandActive
         if cmd and type(M._viewmodelCommandCallback) == "function"
             and (type(viewmodelCommandActive) ~= "function" or viewmodelCommandActive()) then
@@ -2227,7 +2227,7 @@ function M:Build(opts)
                 local message = tostring(err)
                 if M._viewmodelCommandError ~= message then
                     M._viewmodelCommandError = message
-                    print("[rgnMultitool] viewmodel command hook error: " .. message)
+                    print("[MAHANMOI] viewmodel command hook error: " .. message)
                 end
             end
         end
@@ -2289,9 +2289,9 @@ function M:Build(opts)
     end)
 
     pcall(function()
-        callbacks.Register("Unload", "rgnMultitool_UIUnload", function()
-            pcall(callbacks.Unregister, "Draw", "rgnMultitool_UIDraw")
-            pcall(callbacks.Unregister, "CreateMove", "rgnMultitool_UIInput")
+        callbacks.Register("Unload", "MAHANMOI_UIUnload", function()
+            pcall(callbacks.Unregister, "Draw", "MAHANMOI_UIDraw")
+            pcall(callbacks.Unregister, "CreateMove", "MAHANMOI_UIInput")
         end)
     end)
 
@@ -2300,11 +2300,11 @@ end
 
 return M
 ]===]
-local __chunk, __err = loadstring(__RGN_GUILIB, "=rgnMultitool_guilib.lua")
-if not __chunk then print("[rgnMultitool] UI compile error: " .. tostring(__err)); return end
+local __chunk, __err = loadstring(__RGN_GUILIB, "=MAHANMOI_guilib.lua")
+if not __chunk then print("[MAHANMOI] UI compile error: " .. tostring(__err)); return end
 local __ok, M = pcall(__chunk)
-if not __ok or type(M) ~= "table" then print("[rgnMultitool] UI load error: " .. tostring(M)); return end
-local RGN_MULTI = rawget(_G, "RGN_MULTITOOL_STATE") or {}
+if not __ok or type(M) ~= "table" then print("[MAHANMOI] UI load error: " .. tostring(M)); return end
+local RGN_MULTI = rawget(_G, "MOI_MULTSCRIPT_STATE") or {}
 local CUSTOM_MODE_FILE = "rgnmultitool_custom_enabled.txt"
 local function loadCustomEnabled()
     local value
@@ -2362,7 +2362,7 @@ function RGN_MULTI.deactivateAgents(reason)
     RGN_MULTI.reason = reason or "official agents disabled"
 end
 
-_G.RGN_MULTITOOL_STATE = RGN_MULTI
+_G.MOI_MULTSCRIPT_STATE = RGN_MULTI
 
 local function loadModule(name, fn)
     local ok, err = pcall(fn)
@@ -2375,7 +2375,7 @@ end
 
 loadModule("MANUAL AA", function()
 -- Native Aimware controls stay under Ragebot > Anti-Aim. Runtime drawing and
--- callbacks are owned by rgnMultitool so reloading cannot duplicate them.
+-- callbacks are owned by MAHANMOI so reloading cannot duplicate them.
 local rbotAA = gui.Reference("Ragebot", "Anti-Aim")
 local yawOffsetRef = gui.Reference("Ragebot", "Anti-Aim", "Yaw Offset")
 local pitchRef = gui.Reference("Ragebot", "Anti-Aim", "Pitch Angle")
@@ -2548,7 +2548,7 @@ M._manualAADrawActive = function() return true end
 M._manualAACommandCallback = manualMove
 M._manualAACommandActive = function() return enabled:GetValue() == true end
 
-callbacks.Register("Unload", "rgnMultitool_ManualAAUnload", function()
+callbacks.Register("Unload", "MAHANMOI_ManualAAUnload", function()
     releaseJumpBug()
     restoreOrientation()
     if M._manualAADrawCallback == manualDraw then M._manualAADrawCallback = nil end
@@ -2840,7 +2840,7 @@ else
     end)
 
     pcall(function()
-        callbacks.Register("FireGameEvent", "rgnMultitool_SkinsEvents", function(event)
+        callbacks.Register("FireGameEvent", "MAHANMOI_SkinsEvents", function(event)
 
             local name
             pcall(function() name = event:GetName() end)
@@ -2877,7 +2877,7 @@ else
         if SetModel.path then SetModel.phase = "custom characters disabled" end
     end
 
-    callbacks.Register("CreateMove", "rgnMultitool_SkinsSpawnWatch", function()
+    callbacks.Register("CreateMove", "MAHANMOI_SkinsSpawnWatch", function()
         tick = tick + 1
         if tick % 8 == 0 then
             local _, alive, pawnKey = pawnState()
@@ -2928,9 +2928,9 @@ else
     end)
 
     pcall(function()
-        callbacks.Register("Unload", "rgnMultitool_SkinsUnload", function()
-            pcall(callbacks.Unregister, "FireGameEvent", "rgnMultitool_SkinsEvents")
-            pcall(callbacks.Unregister, "CreateMove", "rgnMultitool_SkinsSpawnWatch")
+        callbacks.Register("Unload", "MAHANMOI_SkinsUnload", function()
+            pcall(callbacks.Unregister, "FireGameEvent", "MAHANMOI_SkinsEvents")
+            pcall(callbacks.Unregister, "CreateMove", "MAHANMOI_SkinsSpawnWatch")
         end)
     end)
 end
@@ -3726,7 +3726,7 @@ M._viewmodelCommandCallback = function()
     if not ok then
         knifeHandWasAlive = false
         knifeHandStatus = "error"
-        print("[rgnMultitool] knife-hand error: " .. tostring(err))
+        print("[MAHANMOI] knife-hand error: " .. tostring(err))
     end
 end
 
@@ -3751,14 +3751,14 @@ M:OnFrame(function()
 end)
 
 pcall(function()
-    callbacks.Register("Unload", "rgnMultitool_ViewmodelUnload", function()
+    callbacks.Register("Unload", "MAHANMOI_ViewmodelUnload", function()
         pcall(saveConfig)
         if knifeLeftOwned then pcall(commandHand, false) end
         M._viewmodelCommandCallback = nil
         M._viewmodelCommandActive = nil
         if enabled:Get() then pcall(restore) end
         pcall(EXT.uninstall)
-        pcall(callbacks.Unregister, "Unload", "rgnMultitool_ViewmodelUnload")
+        pcall(callbacks.Unregister, "Unload", "MAHANMOI_ViewmodelUnload")
     end)
 end)
 
@@ -4194,14 +4194,14 @@ end)
 syncRemoval()
 
 pcall(function()
-    callbacks.Register("Unload", "rgnMultitool_ScopeUnload", function()
+    callbacks.Register("Unload", "MAHANMOI_ScopeUnload", function()
         pcall(saveConfig)
         pcall(restoreRemoval)
         pcall(draw.SetTexture, nil)
         scopeTexture = nil
         M._scopeDrawCallback = nil
         M._scopeDrawActive = nil
-        pcall(callbacks.Unregister, "Unload", "rgnMultitool_ScopeUnload")
+        pcall(callbacks.Unregister, "Unload", "MAHANMOI_ScopeUnload")
     end)
 end)
 
@@ -5910,7 +5910,7 @@ end]])
         'local CFG_FILE = "rgnweapons_config.txt"')
     source, okCallback = replaceLiteral(source,
         'callbacks.Register("CreateMove", function()',
-        'callbacks.Register("CreateMove", "rgnMultitool_WeaponsEngine", function()')
+        'callbacks.Register("CreateMove", "MAHANMOI_WeaponsEngine", function()')
     local runtimeLiteral = string.format(
         "{ dwEntityList=%s, dwLocalPlayerController=%s, dwNetworkGameClient=%s, dwNetworkGameClient_signOnState=%s }",
         tostring(runtimeOffsets.dwEntityList), tostring(runtimeOffsets.dwLocalPlayerController),
@@ -6242,7 +6242,7 @@ end]], [[local function apply_local_model(pawn, lp)
 end
 
 local function apply_rgn_agent(pawn, lp)
-    local multi = rawget(_G, "RGN_MULTITOOL_STATE")
+    local multi = rawget(_G, "MOI_MULTSCRIPT_STATE")
     if multi and multi.characterMode ~= "agents" then return end
     if not state.opts.rgn_agent_enabled then
         state.modelApplied["rgn-agent"] = nil
@@ -6703,9 +6703,9 @@ end]])
     -- Aimware may invoke CreateMove well over 100 times per second. Detect
     -- inventory/pawn changes at 20 Hz, which is still effectively immediate to
     -- the player, instead of traversing Source 2 entities on every command.
-    source, okEngineThrottle = replaceLiteral(source, [[callbacks.Register("CreateMove", "rgnMultitool_WeaponsEngine", function()
+    source, okEngineThrottle = replaceLiteral(source, [[callbacks.Register("CreateMove", "MAHANMOI_WeaponsEngine", function()
     local okd, d = pcall(active_weapon_def); g_activeDef = okd and d or nil]], [[local rgnNextEngineTick = 0
-callbacks.Register("CreateMove", "rgnMultitool_WeaponsEngine", function()
+callbacks.Register("CreateMove", "MAHANMOI_WeaponsEngine", function()
     local tickNow = now_s()
     if tickNow < rgnNextEngineTick then return end
     rgnNextEngineTick = tickNow + 0.05
@@ -6806,11 +6806,11 @@ local function run()
     end]])
 
     source, okLocalSessionClock = replaceLiteral(source, [[local rgnNextEngineTick = 0
-callbacks.Register("CreateMove", "rgnMultitool_WeaponsEngine", function()
+callbacks.Register("CreateMove", "MAHANMOI_WeaponsEngine", function()
     local tickNow = now_s()
     if tickNow < rgnNextEngineTick then return end]], [[local rgnNextEngineTick = 0
 local rgnLastEngineClock = 0
-callbacks.Register("CreateMove", "rgnMultitool_WeaponsEngine", function()
+callbacks.Register("CreateMove", "MAHANMOI_WeaponsEngine", function()
     local tickNow = now_s()
     if tickNow + 0.25 < rgnLastEngineClock then
         rgnNextEngineTick = 0
@@ -6828,7 +6828,7 @@ local rgnLastEngineClock = 0]], [[pcall(function()
         client.AllowListener("cs_game_disconnected")
         client.AllowListener("round_start")
     end
-    callbacks.Register("FireGameEvent", "rgnMultitool_WeaponsSessionEvents", function(event)
+    callbacks.Register("FireGameEvent", "MAHANMOI_WeaponsSessionEvents", function(event)
         local name
         pcall(function() name = event:GetName() end)
         if name == "server_spawn" or name == "game_newmap" or name == "cs_game_disconnected" or name == "round_start" then
@@ -6953,8 +6953,8 @@ if C then
         if type(C.offsets[key]) ~= "number" then missing[#missing + 1] = key end
     end
     if #missing > 0 then
-        pcall(callbacks.Unregister, "CreateMove", "rgnMultitool_WeaponsEngine")
-        pcall(callbacks.Unregister, "FireGameEvent", "rgnMultitool_WeaponsSessionEvents")
+        pcall(callbacks.Unregister, "CreateMove", "MAHANMOI_WeaponsEngine")
+        pcall(callbacks.Unregister, "FireGameEvent", "MAHANMOI_WeaponsSessionEvents")
         engineError = "current offsets unavailable: " .. table.concat(missing, ", ")
         C = nil
     end
@@ -7167,9 +7167,9 @@ autoConfigSection:Button("Show automatic save status", function()
     end
     M:Notify(tostring(configured) .. " configured items | saved after every change", "success")
 end)autoConfigSection:Button("Check for updates", function()
-    local updater = rawget(_G, "RGN_MULTITOOL_UPDATER")
+    local updater = rawget(_G, "MOI_MULTSCRIPT_UPDATER")
     if type(updater) ~= "table" or type(updater.check) ~= "function" then
-        M:Notify("updates are available when rgnMultitool is launched with loader.lua", "info")
+        M:Notify("updates are available when MAHANMOI is launched with loader.lua", "info")
         return
     end
     local callOk, success, message, state = pcall(updater.check)
@@ -7406,9 +7406,9 @@ M:OnFrame(function()
 end)
 
 pcall(function()
-    callbacks.Register("Unload", "rgnMultitool_WeaponsUnload", function()
-        pcall(callbacks.Unregister, "CreateMove", "rgnMultitool_WeaponsEngine")
-        pcall(callbacks.Unregister, "FireGameEvent", "rgnMultitool_WeaponsSessionEvents")
+    callbacks.Register("Unload", "MAHANMOI_WeaponsUnload", function()
+        pcall(callbacks.Unregister, "CreateMove", "MAHANMOI_WeaponsEngine")
+        pcall(callbacks.Unregister, "FireGameEvent", "MAHANMOI_WeaponsSessionEvents")
 
     end)
 end)
@@ -7420,7 +7420,7 @@ end)
 loadModule("MOVEMENT", function()
 local M = M
 
--- rgnMultitool movement module. Movement is attached to the multitool's
+-- MAHANMOI movement module. Movement is attached to the multitool's
 -- already-live Draw/CreateMove callbacks so Aimware cannot discard it as a
 -- second callback for the same event.
 local bitlib = rawget(_G, "bit")
@@ -8085,11 +8085,11 @@ statusSection:Button("Reset movement state", function()
 end)
 
 pcall(function()
-    callbacks.Unregister("PreMove", "rgnMultitool_MovementPreMove")
-    callbacks.Unregister("CreateMove", "rgnMultitool_MovementCreateMove")
-    callbacks.Unregister("Draw", "rgnMultitool_MovementDraw")
-    callbacks.Unregister("FireGameEvent", "rgnMultitool_MovementEvents")
-    callbacks.Unregister("Unload", "rgnMultitool_MovementUnload")
+    callbacks.Unregister("PreMove", "MAHANMOI_MovementPreMove")
+    callbacks.Unregister("CreateMove", "MAHANMOI_MovementCreateMove")
+    callbacks.Unregister("Draw", "MAHANMOI_MovementDraw")
+    callbacks.Unregister("FireGameEvent", "MAHANMOI_MovementEvents")
+    callbacks.Unregister("Unload", "MAHANMOI_MovementUnload")
 end)
 
 local function onMovementCommand(cmd)
@@ -8152,7 +8152,7 @@ pcall(function()
         client.AllowListener("game_newmap")
         client.AllowListener("cs_game_disconnected")
     end
-    callbacks.Register("FireGameEvent", "rgnMultitool_MovementEvents", function(event)
+    callbacks.Register("FireGameEvent", "MAHANMOI_MovementEvents", function(event)
         if type(M._movementCommandActive) == "function" and not M._movementCommandActive() then return end
         local name
         pcall(function() name = event:GetName() end)
@@ -8168,16 +8168,16 @@ pcall(function()
     end)
 end)
 
-callbacks.Register("Unload", "rgnMultitool_MovementUnload", function()
+callbacks.Register("Unload", "MAHANMOI_MovementUnload", function()
     saveSettings()
     M._movementCommandCallback = nil
     M._movementCommandActive = nil
     M._movementDrawCallback = nil
     M._movementDrawActive = nil
-    pcall(callbacks.Unregister, "PreMove", "rgnMultitool_MovementPreMove")
-    pcall(callbacks.Unregister, "CreateMove", "rgnMultitool_MovementCreateMove")
-    pcall(callbacks.Unregister, "Draw", "rgnMultitool_MovementDraw")
-    pcall(callbacks.Unregister, "FireGameEvent", "rgnMultitool_MovementEvents")
+    pcall(callbacks.Unregister, "PreMove", "MAHANMOI_MovementPreMove")
+    pcall(callbacks.Unregister, "CreateMove", "MAHANMOI_MovementCreateMove")
+    pcall(callbacks.Unregister, "Draw", "MAHANMOI_MovementDraw")
+    pcall(callbacks.Unregister, "FireGameEvent", "MAHANMOI_MovementEvents")
 end)
 
 end)
@@ -9651,7 +9651,7 @@ local tab = M:Tab("IDENTITY")
 tab:Row()
 local nameSection = tab:Section("Custom name")
 local nameEnabled = nameSection:Checkbox("Enable custom name", cfgBool("name_enabled", false))
-local nameText = nameSection:Input("Name text", config.name_text or "rgnMultitool", "custom player name...")
+local nameText = nameSection:Input("Name text", config.name_text or "MAHANMOI", "custom player name...")
 local nameAnimated = nameSection:Checkbox("Animate custom name", cfgBool("name_animated", false))
 local nameSpeed = nameSection:Slider("Name animation speed", cfgNumber("name_speed", 0.60, 0.35, 2.0), 0.35, 2.0, 0.05, "%.2fs")
 
@@ -10017,7 +10017,7 @@ writeRuntime("module loaded")
 end)
 
 loadModule("VOTES", function()
--- rgnMultitool vote revealer.
+-- MAHANMOI vote revealer.
 -- Uses documented game events and ordinary entity APIs. The only FFI call is
 -- the current local HUD-chat printer; Steam avatar vtables remain excluded.
 -- The service is always enabled and intentionally has no tab. Event/session
@@ -10794,13 +10794,13 @@ local function voteLogicTick(t)
     if endAt > 0 and t >= endAt then clearVote("ready"); return end
 end
 
-pcall(function() callbacks.Unregister("Draw", "rgnMultitool_VoteDraw") end)
-pcall(function() callbacks.Unregister("CreateMove", "rgnMultitool_VoteLogic") end)
-pcall(function() callbacks.Unregister("FireGameEvent", "rgnMultitool_VoteEvents") end)
+pcall(function() callbacks.Unregister("Draw", "MAHANMOI_VoteDraw") end)
+pcall(function() callbacks.Unregister("CreateMove", "MAHANMOI_VoteLogic") end)
+pcall(function() callbacks.Unregister("FireGameEvent", "MAHANMOI_VoteEvents") end)
 local runtimeGeneration = (tonumber(rawget(_G, "RGN_VOTE_RUNTIME_GENERATION")) or 0) + 1
 rawset(_G, "RGN_VOTE_RUNTIME_GENERATION", runtimeGeneration)
 local logicBusy = false
-callbacks.Register("CreateMove", "rgnMultitool_VoteLogic", function()
+callbacks.Register("CreateMove", "MAHANMOI_VoteLogic", function()
     if rawget(_G, "RGN_VOTE_RUNTIME_GENERATION") ~= runtimeGeneration or logicBusy then return end
     -- Vote/session work runs at 20 Hz.
     local t = clock()
@@ -10819,7 +10819,7 @@ writeRuntime("module loaded", { session = lastSessionKey, chat = localChatStatus
 callbacks.Register("Unload", function()
     if rawget(_G, "RGN_VOTE_RUNTIME_GENERATION") ~= runtimeGeneration then return end
     rawset(_G, "RGN_VOTE_RUNTIME_GENERATION", runtimeGeneration + 1)
-    pcall(callbacks.Unregister, "CreateMove", "rgnMultitool_VoteLogic")
+    pcall(callbacks.Unregister, "CreateMove", "MAHANMOI_VoteLogic")
     logicBusy = false
 end)
 
@@ -11338,9 +11338,9 @@ statusSection:Custom(62, function(ui)
     ui.label(total and ("Samples: " .. total .. " (direct " .. direct .. " / relay " .. relayed .. ")") or relayProbe.detail, ui.T.textdim)
 end)
 
-pcall(function() callbacks.Unregister("Draw", "rgnMultitool_RegionDraw") end)
-pcall(function() callbacks.Unregister("Unload", "rgnMultitool_RegionUnload") end)
-callbacks.Register("Draw", "rgnMultitool_RegionDraw", function()
+pcall(function() callbacks.Unregister("Draw", "MAHANMOI_RegionDraw") end)
+pcall(function() callbacks.Unregister("Unload", "MAHANMOI_RegionUnload") end)
+callbacks.Register("Draw", "MAHANMOI_RegionDraw", function()
     local t = 0
     pcall(function() t = globals.RealTime() end)
     if t < nextPoll then return end
@@ -11380,10 +11380,10 @@ end)
 -- usable while Steam finishes its asynchronous latency measurement.
 nextProbe = (globals.RealTime() or 0) + 0.5
 
-callbacks.Register("Unload", "rgnMultitool_RegionUnload", function()
+callbacks.Register("Unload", "MAHANMOI_RegionUnload", function()
     saveSettings()
     if applied then restoreAutomatic(false) end
-    pcall(callbacks.Unregister, "Draw", "rgnMultitool_RegionDraw")
+    pcall(callbacks.Unregister, "Draw", "MAHANMOI_RegionDraw")
 end)
 
 end)
@@ -11678,7 +11678,7 @@ local function whitelistRuntime()
         refreshPlayers()
     end
 end
-callbacks.Register("Draw", "rgnMultitool_WhitelistRefresh", whitelistRuntime)
+callbacks.Register("Draw", "MAHANMOI_WhitelistRefresh", whitelistRuntime)
 
 -- DrawESP owns the label, but Ragebot can resolve a target before that draw
 -- pass.  Mirror the exact pawn state from CreateMove as well, so a click on
@@ -11707,7 +11707,7 @@ M._whitelistCommandCallback = whitelistCommand
 M._whitelistCommandActive = function() return whitelistEnabled:Get() == true end
 refreshPlayers()
 
-callbacks.Register("DrawESP", "rgnMultitool_WhitelistESP", function(esp)
+callbacks.Register("DrawESP", "MAHANMOI_WhitelistESP", function(esp)
     if whitelistEnabled:Get() ~= true or not esp then return end
     local entity = safeCall(function() return esp:GetEntity() end)
     local pawn = localPawn()
@@ -11724,10 +11724,10 @@ callbacks.Register("DrawESP", "rgnMultitool_WhitelistESP", function(esp)
     pcall(function() esp:AddTextTop(protected and "WHITELISTED" or "TARGET") end)
 end)
 
-callbacks.Register("Unload", "rgnMultitool_WhitelistUnload", function()
+callbacks.Register("Unload", "MAHANMOI_WhitelistUnload", function()
     cleanupImmortalStates()
-    pcall(callbacks.Unregister, "Draw", "rgnMultitool_WhitelistRefresh")
-    pcall(callbacks.Unregister, "DrawESP", "rgnMultitool_WhitelistESP")
+    pcall(callbacks.Unregister, "Draw", "MAHANMOI_WhitelistRefresh")
+    pcall(callbacks.Unregister, "DrawESP", "MAHANMOI_WhitelistESP")
     if M._whitelistCommandCallback == whitelistCommand then M._whitelistCommandCallback = nil end
     M._whitelistCommandActive = nil
 end)
@@ -11735,9 +11735,9 @@ end)
 
 -- Aimware's anonymous event bridge is tokened so reloads cannot double-dispatch.
 do
-    local callbackId = "rgnMultitool_GameEvents"
-    local unloadId = "rgnMultitool_GameEventsUnload"
-    local bridgeKey = "RGN_MULTITOOL_EVENT_BRIDGE_V1"
+    local callbackId = "MAHANMOI_GameEvents"
+    local unloadId = "MAHANMOI_GameEventsUnload"
+    local bridgeKey = "MOI_MULTSCRIPT_EVENT_BRIDGE_V1"
     local dispatchBusy = false
     local handlers = {
         { field = "_killsayEventCallback", active = "_killsayEventActive", label = "Killsay" },
@@ -11756,7 +11756,7 @@ do
                 and (type(active) ~= "function" or active()) then
                 local ok, err = pcall(handler, event)
                 if not ok then
-                    print(string.format("[rgnMultitool] %s event error: %s", entry.label, tostring(err)))
+                    print(string.format("[MAHANMOI] %s event error: %s", entry.label, tostring(err)))
                 end
             end
         end
@@ -11784,13 +11784,13 @@ do
             local ok, err = pcall(dispatcher, event)
             if not ok then
                 current.lastError = tostring(err)
-                print("[rgnMultitool] event bridge error: " .. tostring(err))
+                print("[MAHANMOI] event bridge error: " .. tostring(err))
             end
         end)
     end)
     bridge.registered = registered == true
     if not registered then
-        print("[rgnMultitool] stable event bridge failed: " .. tostring(registerError))
+        print("[MAHANMOI] stable event bridge failed: " .. tostring(registerError))
     end
 
     callbacks.Register("Unload", unloadId, function()
@@ -11821,4 +11821,4 @@ do
 end
 
 M:Build({ w = 940, h = 560, autoH = false, resize = true })
-print("[rgn] ready " .. RGN_MULTITOOL_VERSION)
+print("[rgn] ready " .. MOI_MULTSCRIPT_VERSION)
