@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="assets/rgnmultitool-banner.png" alt="rgnMULTITOOL — Aimware Lua Toolkit — Created and owned by ragnarokcs" width="100%">
+  <img src="assets/rgnmultitool-banner.png" alt="MAHANMOI — Aimware Lua Toolkit — Created and owned by ragnarokcs" width="100%">
 </p>
 
-<h1 align="center">rgnMultitool</h1>
+<h1 align="center">MAHANMOI</h1>
 
 <p align="center">
   <strong>Source-visible Aimware Lua toolkit for CS2.</strong><br>
@@ -20,7 +20,7 @@
 
 [**Download `loader.lua`**](https://raw.githubusercontent.com/ragnarokcs/rgnMultitool/main/loader.lua)
 
-`loader.lua` is the primary and recommended entry point. It validates and runs the current public source, keeps a last-known-good offline cache and downloads the full Lua again only when `version.txt` changes. `rgnMultitool.lua` remains available for source review and development; regular users do not need to install it manually.
+`loader.lua` is the primary and recommended entry point. It validates and runs the current public source, keeps a last-known-good offline cache and downloads the full Lua again only when `version.txt` changes. `MAHANMOI.lua` remains available for source review and development; regular users do not need to install it manually.
 
 ## Interface preview
 
@@ -154,9 +154,9 @@ The distributed `loader.lua` checks the small `version.txt` manifest on startup.
 1. Download only [`loader.lua`](https://raw.githubusercontent.com/ragnarokcs/rgnMultitool/main/loader.lua) and place it in Aimware's Lua scripts folder.
 2. In Aimware Lua permissions, allow internet connections and editing Lua files.
 3. Run `loader.lua`.
-4. Keep only one rgnMultitool loader/source active at a time.
+4. Keep only one MAHANMOI loader/source active at a time.
 
-Keep `loader.lua` as the only rgnMultitool script configured for autorun. The loader and full source use relative data filenames and contain no Windows username or PC-specific installation path.
+Keep `loader.lua` as the only MAHANMOI script configured for autorun. The loader and full source use relative data filenames and contain no Windows username or PC-specific installation path.
 
 ## Update safety
 
