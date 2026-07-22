@@ -1,9 +1,9 @@
 -- Primary MAHANMOI entry point for Aimware CS2.
--- Source: https://github.com/MAHANMOI/MAHANMOI
+-- Source: https://github.com/mahanneo/skin_changer_v6_moi
 
 local LOADER_VERSION = "1.1.0"
-local USER = "MAHANMOI"
-local REPO = "MAHANMOI"
+local USER = "mahanneo"
+local REPO = "skin_changer_v6_moi"
 local BRANCH = "main"
 local BASE = "https://raw.githubusercontent.com/" .. USER .. "/" .. REPO .. "/" .. BRANCH .. "/"
 
