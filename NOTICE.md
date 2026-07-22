@@ -2,7 +2,7 @@
 
 Copyright (c) 2026 mahanneo.
 
-This repository contains the complete source distributed by the rgnMultitool loader. Development used public API information and implementation references from:
+This repository contains the complete source distributed by the mahanmoi loader. Development used public API information and implementation references from:
 
 - Aimware Lua documentation: https://aimware.gitbook.io/lua
 - cachorropacoca/aw_cs2v6_femboytap
