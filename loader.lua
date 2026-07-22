@@ -1,15 +1,15 @@
--- Primary rgnMultitool entry point for Aimware CS2.
--- Source: https://github.com/ragnarokcs/rgnMultitool
+-- Primary MAHANMOI entry point for Aimware CS2.
+-- Source: https://github.com/MAHANMOI/MAHANMOI
 
 local LOADER_VERSION = "1.1.0"
-local USER = "ragnarokcs"
-local REPO = "rgnMultitool"
+local USER = "MAHANMOI"
+local REPO = "MAHANMOI"
 local BRANCH = "main"
 local BASE = "https://raw.githubusercontent.com/" .. USER .. "/" .. REPO .. "/" .. BRANCH .. "/"
 
-local MANIFEST_FILE = "rgnMultitool_local_version.txt"
-local CACHE_FILE = "rgnMultitool_source_cache.txt"
-local EXPECTED_SIGNATURE = "RGN_MULTITOOL_SOURCE_V1"
+local MANIFEST_FILE = "MAHANMOI_local_version.txt"
+local CACHE_FILE = "MAHANMOI_source_cache.txt"
+local EXPECTED_SIGNATURE = "MOI_MULTSCRIPT_SOURCE_V1"
 local DEFAULT_MIN_BYTES = 250000
 
 local function readFile(path)
@@ -78,10 +78,10 @@ local function validateSource(source, expectedVersion, minBytes)
         return nil, "source signature mismatch"
     end
     if expectedVersion then
-        local marker = 'local RGN_MULTITOOL_VERSION = "' .. expectedVersion .. '"'
+        local marker = 'local MOI_MULTSCRIPT_VERSION = "' .. expectedVersion .. '"'
         if not source:find(marker, 1, true) then return nil, "source version mismatch" end
     end
-    local chunk, err = loadstring(source, "=rgnMultitool.lua")
+    local chunk, err = loadstring(source, "=MAHANMOI.lua")
     if not chunk then return nil, "compile error: " .. tostring(err) end
     return chunk
 end
@@ -114,7 +114,7 @@ function updater.check()
     local cachedChunk = validateSource(cached, manifest.version, manifest.min_bytes)
     if localVersion == manifest.version and cachedChunk then
         updater.current_version = manifest.version
-        return true, "rgnMultitool is up to date (v" .. manifest.version .. ")", "current"
+        return true, "MAHANMOI is up to date (v" .. manifest.version .. ")", "current"
     end
 
     local source, err = downloadRelease(manifest)
@@ -123,8 +123,8 @@ function updater.check()
     return true, "Update v" .. manifest.version .. " downloaded. Run the Lua again to apply.", "downloaded"
 end
 
-_G.RGN_MULTITOOL_BASE = BASE
-_G.RGN_MULTITOOL_UPDATER = updater
+_G.MOI_MULTSCRIPT_BASE = BASE
+_G.MOI_MULTSCRIPT_UPDATER = updater
 
 local manifestText = fetch(BASE .. "version.txt", 16)
 local manifest = parseManifest(manifestText)
@@ -155,7 +155,7 @@ if not chunk then
     return
 end
 
-updater.current_version = source:match('local RGN_MULTITOOL_VERSION = "([^"]+)"') or "unknown"
+updater.current_version = source:match('local MOI_MULTSCRIPT_VERSION = "([^"]+)"') or "unknown"
 print(string.format("[rgn loader] v%s from %s", updater.current_version, tostring(where)))
 local ok, err = pcall(chunk)
 if not ok then print("[rgn loader] " .. tostring(err)) end
