@@ -151,7 +151,7 @@ if not chunk then
 end
 
 if not chunk then
-    print("[rgn loader] no valid release or offline cache")
+    print("[MOI loader] no valid release or offline cache")
     return
 end
 
