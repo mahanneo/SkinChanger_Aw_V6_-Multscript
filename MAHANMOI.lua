@@ -51,20 +51,20 @@ M.VERSION = "1.0"
 local T = {
     x = 360, y = 200, w = 600, h = 440,
 
-    accent    = { 139, 92, 246 },
-    accent2   = { 168, 85, 247, 255 },
-    accent_bg = { 34, 197, 94, 40 },
-    bg        = { 14, 14, 20, 252 },
-    bg2       = { 24, 24, 36, 252 },
-    section   = { 28, 28, 42, 252 },
-    border    = { 139, 92, 246, 180 },
-    divider   = { 55, 65, 81, 255 },
-    text      = { 243, 244, 246, 255 },
-    textdim   = { 156, 163, 175, 255 },
-    texthi    = { 255, 255, 255, 255 },
-    widget    = { 19, 25, 34, 255 },
-    widgethi  = { 22, 22, 34, 255 },
-    shadow    = { 34, 197, 94, 255 },
+    accent    = { 255, 215, 0 },       -- Gold
+    accent2   = { 255, 215, 0, 255 },  -- Gold
+    accent_bg = { 255, 215, 0, 40 },   -- Gold transparent
+    bg        = { 10, 10, 10, 252 },   -- Black
+    bg2       = { 18, 18, 18, 252 },   -- Dark gray
+    section   = { 25, 25, 25, 252 },   -- Dark gray
+    border    = { 255, 215, 0, 180 },  -- Gold
+    divider   = { 40, 40, 40, 255 },   -- Darker gray
+    text      = { 235, 235, 235, 255 },-- Light gray
+    textdim   = { 150, 150, 150, 255 },-- Gray
+    texthi    = { 255, 255, 255, 255 },-- White
+    widget    = { 15, 15, 15, 255 },   -- Darker black
+    widgethi  = { 30, 30, 30, 255 },   -- Dark gray
+    shadow    = { 0, 0, 0, 255 },      -- Black
 
     title     = "MOI",
     title_tld = "MULTITOOL",
@@ -80,9 +80,9 @@ local T = {
     notif_w      = 290,
     notif_margin = 18,
     notif_life   = 3.5,
-    notif_info    = { 230, 230, 235 },
-    notif_success = { 170, 220, 185 },
-    notif_error   = { 235, 90, 90 },
+    notif_info    = { 255, 215, 0 },   -- Gold
+    notif_success = { 50, 205, 50 },   -- Green
+    notif_error   = { 235, 90, 90 },   -- Red
 }
 
 local WH = { check = 28, button = 36, slider = 36, combo = 52, multicombo = 52, input = 52, color = 28, keybox = 52 }
